@@ -14,7 +14,7 @@
     "docs:deploy": "gh-pages -d docs",
     "docs:clean": "trash docs/api",
     "lint": "run-s lint:js lint:md",
-    "lint:js": "eslint ./lib/*.js ./lib/**/*.js",
+    "lint:js": "eslint rollup.config.js ./lib/*.js ./lib/**/*.js",
     "lint:md": "remark -q .",
     "prepare": "npm run build",
     "test": "run-s test:lint test:server",

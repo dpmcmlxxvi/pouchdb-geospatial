@@ -31,6 +31,10 @@ const build = (filename, plugins) => ({
 });
 
 export default [
-  build('pouchdb-geospatial.js', [commonjs(), globals(), resolve()]),
-  build('pouchdb-geospatial.min.js', [commonjs(), globals(), resolve(), terser()]),
+  build('pouchdb-geospatial.js', [
+    commonjs(), globals(), resolve(),
+  ]),
+  build('pouchdb-geospatial.min.js', [
+    commonjs(), globals(), resolve(), terser(),
+  ]),
 ];
