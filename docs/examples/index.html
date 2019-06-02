@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PouchDB Geospatial Example</title>
+    <link rel="stylesheet"
+          href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#example-collapser"
+              aria-controls="example-collapser"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="example-collapser">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="navbar-brand"
+               href="https://github.com/dpmcmlxxvi/pouchdb-geospatial">
+              pouchdb-geospatial
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12 col-md">
+          <div class="alert alert-dark text-center" role="alert">
+            Select a Spatial Predicate then click on a State
+          </div>
+        </div>
+        <div class="col-12 col-md-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-lg dropdown-toggle"
+                    type="button"
+                    id="predicate"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+              contains
+            </button>
+            <div class="dropdown-menu text-center" aria-labelledby="predicate">
+              <h6 class="dropdown-header">Spatial Predicates</h6>
+              <button class="dropdown-item" type="button">contains</button>
+              <button class="dropdown-item" type="button">coveredby</button>
+              <button class="dropdown-item" type="button">covers</button>
+              <button class="dropdown-item" type="button">crosses</button>
+              <button class="dropdown-item" type="button">disjoint</button>
+              <button class="dropdown-item" type="button">equals</button>
+              <button class="dropdown-item" type="button">intersects</button>
+              <button class="dropdown-item" type="button">overlaps</button>
+              <button class="dropdown-item" type="button">touches</button>
+              <button class="dropdown-item" type="button">within</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div id="map"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-success">States</th>
+                <th scope="col" class="text-danger">Capitals</th>
+                <th scope="col" class="text-primary">Interstates</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="states"></td>
+                <td id="capitals"></td>
+                <td id="interstates"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- pouchdb-geospatial scripts -->
+    <script src="https://unpkg.com/pouchdb@7.0.0/dist/pouchdb.min.js"></script>
+    <script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
+    <script src="https://unpkg.com/de9im"></script>
+    <script src="../../pouchdb-geospatial.js"></script>
+
+    <!-- Example scripts -->
+    <script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="js/example.js"></script>
+
+  </body>
+</html>
