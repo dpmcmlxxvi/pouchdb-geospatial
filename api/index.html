@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="PouchDBGeospatial.html">PouchDBGeospatial</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="externals.list.html" class="dropdown-toggle" data-toggle="dropdown">Externals<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="external-GeoJSON.html">GeoJSON</a></li><li><a href="external-Options.html">Options</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1><a href="https://github.com/dpmcmlxxvi/pouchdb-geospatial">PouchDB Geospatial</a></h1>
+<p><a href="https://travis-ci.org/dpmcmlxxvi/pouchdb-geospatial"><img src="https://travis-ci.org/dpmcmlxxvi/pouchdb-geospatial.svg?branch=master" alt="build"></a>
+<a href="https://coveralls.io/r/dpmcmlxxvi/pouchdb-geospatial?branch=master"><img src="https://img.shields.io/coveralls/dpmcmlxxvi/pouchdb-geospatial.svg" alt="coverage"></a>
+<a href="https://badge.fury.io/js/pouchdb-geospatial"><img src="https://badge.fury.io/js/pouchdb-geospatial.svg" alt="npm"></a>
+<a href="https://www.codacy.com/app/dpmcmlxxvi/pouchdb-geospatial?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/pouchdb-geospatial&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/ee6c4c853e3d4eae9d1cdaab497acdf1" alt="code"></a></p>
+<p>The <a href="https://pouchdb.com">PouchDB</a> Geospatial plugin provides spatial querying of
+<a href="http://geojson.org">GeoJSON</a> objects. The query methods available support the
+<a href="https://en.wikipedia.org/wiki/DE-9IM">DE-9IM</a> spatial predicates. Any GeoJSON object inserted into the
+database via the the plugin API is spatially indexed using an
+<a href="https://en.wikipedia.org/wiki/R-tree">R-Tree</a>. Spatial queries are then processed by querying the R-Tree
+for candidate geometries and the final query results are returned after the
+candidates are filtered by the appropriate spatial predicate. The spatial
+indexing is performed by <a href="https://github.com/mourner/rbush">RBush</a> and geospatial predicates
+are computed with <a href="https://github.com/dpmcmlxxvi/de9im">de9im</a>. A sample of how to use the plugin is
+available at the <a href="http://dpmcmlxxvi.github.io/pouchdb-geospatial/examples">examples page</a>. The API is
+described below and at the <a href="http://dpmcmlxxvi.github.io/pouchdb-geospatial/api">documentation page</a>.</p>
+<h2>USAGE</h2>
+<h3>In browser</h3>
+<p>To use this plugin, include it after <code>pouchdb.js</code> in your HTML page. This plugin
+has two dependencies not bundled with it that must be included
+<a href="https://github.com/Turfjs/turf">Turf</a> and <a href="https://github.com/dpmcmlxxvi/de9im">de9im</a>.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/pouchdb/dist/pouchdb.min.js&quot;>&lt;/script>
+&lt;script src=&quot;https://unpkg.com/@turf/turf&quot;>&lt;/script>
+&lt;script src=&quot;https://unpkg.com/de9im&quot;>&lt;/script>
+&lt;script src=&quot;https://unpkg.com/pouchdb-geospatial&quot;>&lt;/script>
+</code></pre>
+<h3>In Node</h3>
+<p>To use it in Node, install it</p>
+<pre class="prettyprint source lang-shell"><code>npm install pouchdb-geospatial
+</code></pre>
+<p>then attach it to the <code>PouchDB</code> object:</p>
+<pre class="prettyprint source lang-javascript"><code>import PouchDB from 'pouchdb';
+import PouchDBGeospatial from 'pouchdb-geospatial';
+PouchDB.plugin(PouchDBGeospatial);
+</code></pre>
+<h3>Create database</h3>
+<p>The plugin methods are exposed via an object API. All methods return promises.</p>
+<pre class="prettyprint source lang-javascript"><code>const db = new PouchDB('dbname');
+const api = db.geospatial();
+</code></pre>
+<h2>API</h2>
+<h3>Database methods</h3>
+<p>The database methods accept the same options and return a promise with the same
+response returned by their corresponding <code>PouchDB</code> methods: <code>put</code>, <code>post</code>,
+<code>bulkDocs</code>, and <code>remove</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>api.add(geojson, options);
+api.load([geojson, ...], options);
+api.remove(id);
+</code></pre>
+<h3>Query methods</h3>
+<p>The query methods accept a GeoJSON and return a promise with an array of
+database document IDs that satisfy the spatial predicate. For example,</p>
+<pre class="prettyprint source lang-javascript"><code>api.contains(geojson).then((ids) => {
+  // Do something with document ids.
+});
+</code></pre>
+<p>The following spatial predicates are available:</p>
+<pre class="prettyprint source lang-javascript"><code>contains
+coveredby
+covers
+crosses
+disjoint
+equals
+inside
+intersects
+overlaps
+touches
+</code></pre>
+<p>Each predicate takes one GeoJSON argument. The predicate should be interpreted
+as the database GeoJSON operating on the argument GeoJSON. For example,</p>
+<pre class="prettyprint source lang-javascript"><code>api.within(polygon)
+</code></pre>
+<p>should be read as</p>
+<pre class="prettyprint source lang-shell"><code>any database GeoJSON within polygon?
+</code></pre>
+<h2>BUILD</h2>
+<p>To build and test the library locally:</p>
+<pre class="prettyprint source lang-shell"><code>npm install
+npm test
+</code></pre>
+<p>After installation, the bundled plugin is at <code>pouchdb-geospatial.min.js</code>.</p>
+<h2>LICENSE</h2>
+<p>Copyright (c) 2019 Daniel Pulido <a href="mailto:dpmcmlxxvi@gmail.com">mailto:dpmcmlxxvi@gmail.com</a></p>
+<p>Source code is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a></p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
+	
+		on 2019-06-02T20:04:26-04:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
