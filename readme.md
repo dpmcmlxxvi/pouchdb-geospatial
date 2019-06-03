@@ -91,10 +91,10 @@ covers
 crosses
 disjoint
 equals
-inside
 intersects
 overlaps
 touches
+within
 ```
 
 Each predicate takes one GeoJSON argument. The predicate should be interpreted
