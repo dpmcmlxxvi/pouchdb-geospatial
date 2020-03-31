@@ -65,7 +65,7 @@
     "path": "^0.12.7",
     "pouchdb": "^7.1.1",
     "pouchdb-server": "^4.1.0",
-    "remark-cli": "^7.0.0",
+    "remark-cli": "^8.0.0",
     "remark-preset-lint-markdown-style-guide": "^3.0.0",
     "rollup": "^2.0.0",
     "rollup-plugin-commonjs": "^10.0.0",
