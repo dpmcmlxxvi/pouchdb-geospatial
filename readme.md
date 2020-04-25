@@ -3,7 +3,7 @@
 [![build](https://travis-ci.org/dpmcmlxxvi/pouchdb-geospatial.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/pouchdb-geospatial)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/pouchdb-geospatial.svg)](https://coveralls.io/r/dpmcmlxxvi/pouchdb-geospatial?branch=master)
 [![npm](https://badge.fury.io/js/pouchdb-geospatial.svg)](https://badge.fury.io/js/pouchdb-geospatial)
-[![code](https://api.codacy.com/project/badge/Grade/ee6c4c853e3d4eae9d1cdaab497acdf1)](https://www.codacy.com/app/dpmcmlxxvi/pouchdb-geospatial?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/pouchdb-geospatial&amp;utm_campaign=Badge_Grade) [![Greenkeeper badge](https://badges.greenkeeper.io/dpmcmlxxvi/pouchdb-geospatial.svg)](https://greenkeeper.io/)
+[![code](https://api.codacy.com/project/badge/Grade/ee6c4c853e3d4eae9d1cdaab497acdf1)](https://www.codacy.com/app/dpmcmlxxvi/pouchdb-geospatial?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/pouchdb-geospatial&amp;utm_campaign=Badge_Grade)
 
 The [PouchDB][pouchdb-site] Geospatial plugin provides spatial querying of
 [GeoJSON][geojson-site] objects. The query methods available support the
