@@ -1,5 +1,5 @@
+const fs = require('fs');
 const glob = require('glob');
-const load = require('load-json-file');
 const path = require('path');
 
 // Find fixtures for each predicate and expected return type
@@ -27,7 +27,7 @@ const fixtures = {};
     fixtures[predicate][type] = [];
     const pattern = path.join(__dirname, 'data', predicate, type, '**', ext);
     glob.sync(pattern).forEach((filepath) => {
-      const geojson = load.sync(filepath);
+      const geojson = JSON.parse(fs.readFileSync(filepath));
       fixtures[predicate][type].push(geojson);
     });
   });
