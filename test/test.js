@@ -1,20 +1,23 @@
-import fixtures from './fixtures';
-import load from 'load-json-file';
-import path from 'path';
-import PouchDB from 'pouchdb';
-import PouchDBGeospatial from '../lib';
-import tap from 'tap';
+const fixtures = require('./fixtures');
+const fs = require('fs');
+const path = require('path');
+const PouchDB = require('pouchdb');
+const PouchDBGeospatial = require('./pouchdb.geospatial.loader').default;
+const tap = require('tap');
 
 PouchDB.plugin(PouchDBGeospatial);
 
+// JSON loader
+const loadSync = (filepath) => JSON.parse(fs.readFileSync(filepath));
+
 // Load test fixtures
 const directory = path.join(__dirname, 'data/api');
-const capitals = load.sync(path.join(directory, 'us_capitals.json'));
-const city = load.sync(path.join(directory, 'us_city.json'));
-const interstates = load.sync(path.join(directory, 'us_interstates.json'));
-const points = load.sync(path.join(directory, 'points.json'));
-const pointsId = load.sync(path.join(directory, 'points_id.json'));
-const states = load.sync(path.join(directory, 'us_states.json'));
+const capitals = loadSync(path.join(directory, 'us_capitals.json'));
+const city = loadSync(path.join(directory, 'us_city.json'));
+const interstates = loadSync(path.join(directory, 'us_interstates.json'));
+const points = loadSync(path.join(directory, 'points.json'));
+const pointsId = loadSync(path.join(directory, 'points_id.json'));
+const states = loadSync(path.join(directory, 'us_states.json'));
 
 // Geospatial db and apiget created before each test.
 let api;
@@ -64,12 +67,10 @@ const tests = (predicate, t) => {
 tap.beforeEach((done) => {
   db = database();
   api = db.geospatial();
-  done();
 });
 
 tap.afterEach((done) => {
   db.destroy();
-  done();
 });
 
 tap.test('Post points to database', async (t) => {
