@@ -1,6 +1,6 @@
 # [PouchDB Geospatial][pouchdb-geospatial-github]
 
-[![build](https://github.com/dpmcmlxxvi/pouchdb-geospatial/actions/workflows/test.yml/badge.svg)](https://github.com/dpmcmlxxvi/pouchdb-geospatial/actions)
+[![build](https://github.com/dpmcmlxxvi/pouchdb-geospatial/actions/workflows/build.yml/badge.svg)](https://github.com/dpmcmlxxvi/pouchdb-geospatial/actions)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/pouchdb-geospatial.svg)](https://coveralls.io/r/dpmcmlxxvi/pouchdb-geospatial?branch=master)
 [![npm](https://badge.fury.io/js/pouchdb-geospatial.svg)](https://badge.fury.io/js/pouchdb-geospatial)
 [![codacy](https://app.codacy.com/project/badge/Grade/c6b4a5a7bf2d4484b777ba29cf08242f)](https://www.codacy.com/gh/dpmcmlxxvi/pouchdb-geospatial/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/pouchdb-geospatial&amp;utm_campaign=Badge_Grade)
