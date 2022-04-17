@@ -73,6 +73,23 @@ api.load([geojson, ...], options);
 api.remove(id);
 ```
 
+### Indexing methods
+
+The underlying R-Tree can be accessed using the `tree` attribute. It returns
+an `GeospatialTree` which allows a user to directly use it's methods to `add`,
+`load`, `remove`, and `query` the tree. However, care should be used when
+modifying the tree directly since the tree and database can become out-of-sync.
+The primary use of directly accessing the tree is to reload data from disk after
+a page reload or application restart. Otherwise, it is preferable to directly
+use the database methods to add data.
+
+```javascript
+api.tree.add(geojson, id);
+api.tree.load([{id, geojson}, ...]);
+api.tree.remove({id, geojson});
+api.tree.query(geojson);
+```
+
 ### Query methods
 
 The query methods accept a GeoJSON and return a promise with an array of
