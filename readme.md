@@ -17,7 +17,7 @@ are computed with [de9im][de9im-github]. A sample of how to use the plugin is
 available at the [examples page][pouchdb-geospatial-examples]. The API is
 described below and at the [documentation page][pouchdb-geospatial-api].
 
-![pouchdb-geospatial example](/docs/examples/img/example.png?raw=true)
+![pouchdb-geospatial example](https://raw.githubusercontent.com/dpmcmlxxvi/pouchdb-geospatial/master/docs/examples/img/example.png)
 
 ## USAGE
 
