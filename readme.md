@@ -6,16 +6,23 @@
 [![codacy](https://app.codacy.com/project/badge/Grade/c6b4a5a7bf2d4484b777ba29cf08242f)](https://www.codacy.com/gh/dpmcmlxxvi/pouchdb-geospatial/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/pouchdb-geospatial&amp;utm_campaign=Badge_Grade)
 
 The [PouchDB][pouchdb-site] Geospatial plugin provides spatial querying of
-[GeoJSON][geojson-site] objects. The query methods available support the
-[DE-9IM][de9im-wiki] spatial predicates. Any GeoJSON object inserted into the
+[GeoJSON][geojson-site] objects. GeoJSON objects within a PouchDB database
+can be queried against an input GeoJSON object to test if they satisfy one
+of the [DE-9IM][de9im-wiki] spatial predicates: `contains`, `coveredby`,
+`covers`, `crosses`, `disjoint`, `equals`, `intersects`, `overlaps`,
+`touches`, `within`.
+
+Any GeoJSON object inserted into the
 database via the the plugin API is spatially indexed using an
 [R-Tree][rtree-wiki]. Spatial queries are then processed by querying the R-Tree
 for candidate geometries and the final query results are returned after the
 candidates are filtered by the appropriate spatial predicate. The spatial
 indexing is performed by [RBush][rbush-github] and geospatial predicates
-are computed with [de9im][de9im-github]. A sample of how to use the plugin is
-available at the [examples page][pouchdb-geospatial-examples]. The API is
-described below and at the [documentation page][pouchdb-geospatial-api].
+are computed with [de9im][de9im-github].
+
+A sample of how to use the plugin is available at the
+[examples page][pouchdb-geospatial-examples]. The API is described below and at
+the [documentation page][pouchdb-geospatial-api].
 
 ![pouchdb-geospatial example](https://raw.githubusercontent.com/dpmcmlxxvi/pouchdb-geospatial/master/docs/examples/img/example.png)
 
