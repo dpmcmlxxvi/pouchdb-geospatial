@@ -1,8 +1,10 @@
-import commonjs from 'rollup-plugin-commonjs';
-import globals from 'rollup-plugin-node-globals';
-import pkg from './package.json';
-import resolve from 'rollup-plugin-node-resolve';
-import {terser} from 'rollup-plugin-terser';
+import commonjs from '@rollup/plugin-commonjs';
+import globals from 'rollup-plugin-node-globals'; // optional: keep if you rely on it
+import json from '@rollup/plugin-json';
+import resolve from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+
+const pkg = require('./package.json');
 
 const banner = `\
 /**
@@ -32,9 +34,16 @@ const build = (filename, plugins) => ({
 
 export default [
   build('pouchdb-geospatial.js', [
-    commonjs(), globals(), resolve(),
+    resolve({ browser: true }), // resolve first (for browser fields), then commonjs
+    commonjs(),
+    globals(), // optional: provides `process`, `Buffer`, etc. in bundles
   ]),
   build('pouchdb-geospatial.min.js', [
-    commonjs(), globals(), resolve(), terser(),
+    resolve({ browser: true }),
+    commonjs(),
+    globals(),
+    terser(),
+    json(),
   ]),
 ];
+

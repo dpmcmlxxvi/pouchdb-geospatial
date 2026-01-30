@@ -64,12 +64,12 @@ const tests = (predicate, t) => {
   })));
 };
 
-tap.beforeEach((done) => {
+tap.beforeEach(() => {
   db = database();
   api = db.geospatial();
 });
 
-tap.afterEach((done) => {
+tap.afterEach(() => {
   db.destroy();
 });
 
